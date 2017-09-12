@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+cd ..
+mkdir tf
+mkdir tf/lib
+mkdir tf/include
+sudo cp  bazel-bin/tensorflow/libtensorflow.so tf/lib
+cp -R /usr/local/lib/python2.7/dist-packages/tensorflow/include/* tf/include/
+tar cvzf tensorflow.tar.gz tf
+
