@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
 cd ..
+if [ -d tf ]; then
+    rm -r tf
+fi
 mkdir tf
 mkdir tf/lib
 mkdir tf/include
