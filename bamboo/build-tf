@@ -1,0 +1,16 @@
+#! /bin/bash -e
+
+cd ..
+#fix makefile for debug
+sed -i "s/name = \"libtensorflow\.so\",/name = \"libtensorflow\.so\",\n    linkopts = \[\"-Wl,--version-script=tensorflow\/tf_version_script\.lds\"\],/g" tensorflow/BUILD
+#build
+rm -rf /tmp/tensorflow_pkg
+#all default options
+yes "" | ./configure
+#python build (and headers that will be installed in /usr/local/lib/python2.7/dist-packages/tensorflow/include/)
+bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --copt=-mavx --copt=-mavx2 --copt=-mfma --local_resources 2048,4,1.0
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+sudo pip install /tmp/tensorflow_pkg/tensorflow*
+#build lib
+bazel build //tensorflow:libtensorflow.so -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --local_resources 2048,4,1.0
+
