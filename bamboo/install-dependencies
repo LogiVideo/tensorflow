@@ -28,6 +28,8 @@ sudo apt-get -y install \
  #sudo apt-get update
  #sudo apt-get -y install bazel
  #sudo apt-get install -f
- wget https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
- chmod +x bazel-0.5.4-installer-linux-x86_64.sh
- ./bazel-0.5.4-installer-linux-x86_64.sh 
+ rm -f bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
+ wget https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-without-jdk-installer-linux-x86_64.sh .
+ chmod +x ./bazel-0.5.4-installer-linux-x86_64.sh
+ ./bazel-0.5.4-installer-linux-x86_64.sh
+ bazel version
