@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-cd ..
+cd "$(dirname $0)/.."
 #fix makefile for debug
 sed -i "s/name = \"libtensorflow\.so\",/name = \"libtensorflow\.so\",\n    linkopts = \[\"-Wl,--version-script=tensorflow\/tf_version_script\.lds\"\],/g" tensorflow/BUILD
 #build
