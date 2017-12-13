@@ -196,14 +196,15 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
       name = "six",
       actual = "@six_archive//:six",
   )
-
+# dropping github mirror due to sha256 issues:
+# https://github.com/tensorflow/tensorflow/issues/12979
   native.http_archive(
       name = "protobuf",
       urls = [
           "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/archive/008b5a228b37c054f46ba478ccafa5e855cb16db.tar.gz",
-          "https://github.com/google/protobuf/archive/008b5a228b37c054f46ba478ccafa5e855cb16db.tar.gz",
+          #"https://github.com/google/protobuf/archive/008b5a228b37c054f46ba478ccafa5e855cb16db.tar.gz",
       ],
-      sha256 = "be787d476f8fbda86aaa8fef9054ba5ea66c8ab684f39beac48c6f4744eba0c2",
+      sha256 = "2737ad055eb8a9bc63ed068e32c4ea280b62d8236578cb4d4120eb5543f759ab",
       strip_prefix = "protobuf-008b5a228b37c054f46ba478ccafa5e855cb16db",
   )
 
