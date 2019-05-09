@@ -13,20 +13,10 @@ sudo apt-get -y install \
      libgoogle-glog-dev
      sudo apt-get install -f
 
-#jdk dependency for bazel
-sudo apt-get install -y openjdk-8-jdk
-# export DEBIAN_FRONTEND=noninteractive
-# yes "" | sudo add-apt-repository ppa:webupd8team/java
-# sudo apt-get update
-# echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
-# sudo apt-get -y install oracle-java8-installer
-# sudo apt-get -y install oracle-java8-set-default
-# sudo apt-get install -f
-
-#installing bazel
- rm -f bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
- wget https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
- sudo chmod a+x ./bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
- sudo ./bazel-0.5.4-without-jdk-installer-linux-x86_64.sh
- bazel version
-
+# #installing bazel
+BAZEL_PKG="bazel-0.5.4-installer-linux-x86_64.sh"
+rm -f bazel-*
+wget https://github.com/bazelbuild/bazel/releases/download/0.5.4/${BAZEL_PKG}
+sudo chmod a+x ./${BAZEL_PKG}
+sudo ./${BAZEL_PKG}
+bazel version
