@@ -18,7 +18,7 @@ case $opt in
 done
 shift $(($OPTIND - 1))
 
-CPU_FLAGS="--copt=-mavx --copt=-mavx2 --copt=-mfma"
+CPU_FLAGS="--copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mno-avx512f --copt=-mno-avx512pf --copt=-mno-avx512er --copt=-mno-avx512cd"
 if [ "$VM_BUILD" = "1" ]; then
         echo "Building without cpu optimisation"
         CPU_FLAGS=""
